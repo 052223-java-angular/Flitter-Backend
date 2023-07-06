@@ -18,13 +18,8 @@ public class PostVoteService {
     UserService userService;
 
     public void vote(PostVoteRequest req) {
-
-        //incomplete code
-        // User user = userService.findById(req.getUserId());
-        // Post post = postService.findById(req.getPostId());
-
-        User user = null;
-        Post post = null;
+        User user = userService.findById(req.getUserId());
+        Post post = postService.findById(req.getPostId());
 
         PostVote vote = findByUserAndPost(user, post);
         if (vote == null) {

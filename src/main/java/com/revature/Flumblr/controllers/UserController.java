@@ -18,7 +18,6 @@ import com.revature.Flumblr.dtos.requests.NewLoginRequest;
 import com.revature.Flumblr.dtos.requests.NewUserRequest;
 import com.revature.Flumblr.dtos.responses.Principal;
 
-
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -30,7 +29,6 @@ public class UserController {
     private final TokenService tokenService;
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody NewUserRequest req) {
@@ -58,7 +56,7 @@ public class UserController {
         // register user
         userService.registerUser(req);
 
-         logger.info("Successfully Registered");
+        logger.info("Successfully Registered");
 
         // return 201 - CREATED
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -66,19 +64,18 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody NewLoginRequest req) {
-     
-            // userservice to call login method
-            Principal principal = userService.login(req);
 
-              logger.info("Successfully logged in");
+        // userservice to call login method
+        Principal principal = userService.login(req);
 
-            // create a jwt token
-            String token = tokenService.generateJWT(principal);
-        
-    
-            principal.setToken(token);
-            // return status ok and return principal object
-            return ResponseEntity.status(HttpStatus.OK).body(principal);
+        logger.info("Successfully logged in");
+
+        // create a jwt token
+        String token = tokenService.generateJWT(principal);
+
+        principal.setToken(token);
+        // return status ok and return principal object
+        return ResponseEntity.status(HttpStatus.OK).body(principal);
     }
-    
+
 }

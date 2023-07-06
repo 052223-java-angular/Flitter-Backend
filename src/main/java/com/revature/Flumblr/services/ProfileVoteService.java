@@ -3,12 +3,14 @@ package com.revature.Flumblr.services;
 import org.springframework.stereotype.Service;
 
 import com.revature.Flumblr.dtos.requests.ProfileVoteRequest;
+import com.revature.Flumblr.entities.Post;
 import com.revature.Flumblr.entities.Profile;
 import com.revature.Flumblr.entities.ProfileVote;
 import com.revature.Flumblr.entities.User;
 import com.revature.Flumblr.repositories.ProfileVoteRepository;
 
 import lombok.AllArgsConstructor;
+
 @AllArgsConstructor
 @Service
 public class ProfileVoteService {
@@ -17,11 +19,8 @@ public class ProfileVoteService {
     UserService userService;
 
     public void vote(ProfileVoteRequest req) {
-
-        // Patrick will handle profileService
-
-        User user = null;
-        Profile profile = null;
+        User user = userService.findById(req.getUserId());
+        Profile profile = profileService.findById(req.getProfileId());
 
         ProfileVote vote = findByUserAndProfile(user, profile);
         if (vote == null) {

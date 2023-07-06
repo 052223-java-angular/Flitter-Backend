@@ -50,7 +50,8 @@ public class UserService {
 
     public User findByUsername(String username) {
         Optional<User> userOpt = userRepository.findByUsername(username);
-        if(userOpt.isEmpty()) throw new ResourceNotFoundException("couldn't find user for username " + username);
+        if (userOpt.isEmpty())
+            throw new ResourceNotFoundException("couldn't find user for username " + username);
         return userOpt.get();
     }
 
@@ -95,4 +96,3 @@ public class UserService {
         }
     }
 }
-

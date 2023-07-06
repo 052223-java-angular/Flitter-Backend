@@ -8,7 +8,6 @@ import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.revature.Flumblr.dtos.requests.NewPostRequest;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -85,8 +84,6 @@ public class Post {
     @JoinTable(name = "post_tag_list", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private Set<Tag> tags;
 
-    
-
     public Post(String message, String mediaType, String fileUrl, User user) {
 
         this.id = UUID.randomUUID().toString();
@@ -96,7 +93,6 @@ public class Post {
         this.user = user;
         this.createTime = new Date();
         this.editTime = this.createTime;
-        
 
     }
 }

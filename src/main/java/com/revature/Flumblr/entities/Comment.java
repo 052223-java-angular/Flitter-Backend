@@ -35,10 +35,10 @@ public class Comment {
     @Id
     private String id;
 
-    @Column(nullable = false, name="create_time")
+    @Column(nullable = false, name = "create_time")
     private Date createTime;
 
-    @Column(nullable = false, name="edit_time")
+    @Column(nullable = false, name = "edit_time")
     private Date editTime;
 
     @Column(nullable = false, columnDefinition = "text")

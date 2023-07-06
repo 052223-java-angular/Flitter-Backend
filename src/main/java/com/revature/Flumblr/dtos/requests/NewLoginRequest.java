@@ -13,4 +13,3 @@ public class NewLoginRequest {
     private String username;
     private String password;
 }
-    

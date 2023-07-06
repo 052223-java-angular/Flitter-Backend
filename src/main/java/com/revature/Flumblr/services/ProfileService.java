@@ -1,4 +1,5 @@
 package com.revature.Flumblr.services;
+
 import com.revature.Flumblr.dtos.requests.NewProfileRequest;
 import com.revature.Flumblr.entities.Profile;
 import com.revature.Flumblr.entities.User;
@@ -14,11 +15,11 @@ import java.util.Optional;
 @Service
 public class ProfileService {
 
-    UserRepository userRepo;
-    ProfileRepository profileRepo;
+    UserRepository userRepository;
+    ProfileRepository profileRepository;
 
     public Profile findById(String profileId) {
-        Optional<Profile> profileOpt = profileRepo.findById(profileId);
+        Optional<Profile> profileOpt = profileRepository.findById(profileId);
         if (profileOpt.isEmpty()) {
             throw new ProfileNotFoundException("No profile located for specified Id.");
         }
@@ -26,21 +27,20 @@ public class ProfileService {
     }
 
     public void setProfileImg(String img, NewProfileRequest req) {
-        User existingUser = userRepo.getReferenceById(req.getUserId());
-        profileRepo.setProfileImg(img, existingUser);
+        User existingUser = userRepository.getReferenceById(req.getUserId());
+        profileRepository.setProfileImg(img, existingUser);
     }
 
     public Profile setBio(NewProfileRequest req) {
-        User existingUser = userRepo.getReferenceById(req.getUserId());
-        return profileRepo.setBio(req.getBio(), existingUser);
+        User existingUser = userRepository.getReferenceById(req.getUserId());
+        return profileRepository.setBio(req.getBio(), existingUser);
     }
 
     public Profile getProfileByUser(String id) {
 
-         User existingUser = userRepo.getReferenceById(id);
+        User existingUser = userRepository.getReferenceById(id);
 
-
-        return profileRepo.getProfileByUser(existingUser);
+        return profileRepository.getProfileByUser(existingUser);
     }
 
 }

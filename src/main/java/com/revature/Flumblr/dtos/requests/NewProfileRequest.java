@@ -15,6 +15,5 @@ public class NewProfileRequest {
     private String username;
     private String profile_img;
     private String bio;
-    private String notification_id;
 
 }
