@@ -11,4 +11,5 @@ public interface ThemeRepository extends JpaRepository<Theme, String> {
     Optional<Theme> findByName(String name);
 
     List<Theme> findAllByOrderByIdAsc();
+
 }

@@ -33,9 +33,4 @@ public class Theme {
     @JsonManagedReference
     private Set<Profile> profiles;
 
-    public Theme(String themeName) {
-        this.id = UUID.randomUUID().toString();
-        this.name = themeName;
-    }
-
 }

@@ -29,12 +29,12 @@ public class Profile {
     private String bio;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "theme_id")
+    @JoinColumn(name = "theme_id", nullable = false)
     @JsonBackReference
     private Theme theme;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     private User user;
 

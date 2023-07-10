@@ -82,6 +82,6 @@ public class S3StorageService {
     } catch (IOException e) {
         throw new RuntimeException("Failed to delete file from S3: " + e.getMessage());
     }
-}
+    }
 
 }
